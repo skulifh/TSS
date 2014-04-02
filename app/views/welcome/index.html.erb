@@ -13,10 +13,10 @@
 	<tbody>
 		<% @events.each do |event| %>
 		<tr>
-			<td><%= link_to event.name, event_path(event.id), { method: :post } %></td>
+			<td><%= link_to event.name, event_path(event.id), { method: :get } %></td>
 			<td><%=event.description%></td>
 			<td><%=event.price%></td>
-			<td><%= button_to "Buy ticket", event_purchase_path(event.id), {class: "btn"} %></td>
+			<td><%= button_to "Buy ticket", event_purchase_path(event.id), {class: "btn", method: :get} %></td>
 		</tr>
 		<% end %>
 </tbody>

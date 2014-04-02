@@ -1,3 +1,3 @@
 <h1>Buy a ticket for <%=@event.name%></h1>
-<%= button_to "Back", event_path(@event.id), {class: "btn"} %>
+<%= button_to "Back", event_path(@event.id), {class: "btn", method: :get} %>
 <%= button_to "Purchase", event_confirm_purchase_path(@event.id), {class: "btn"} %>

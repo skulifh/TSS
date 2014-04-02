@@ -7,8 +7,8 @@ TSS::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  post '/events/:id', to: 'events#show', as: 'event'
-  post '/events/:id/purchase', to: 'events#purchase', as: 'event_purchase'
+  get '/events/:id', to: 'events#show', as: 'event'
+  get '/events/:id/purchase', to: 'events#purchase', as: 'event_purchase'
   post '/events/:id/confirm_purchase', to: 'events#confirm_purchase', as: 'event_confirm_purchase'
   
   # Example of regular route:
