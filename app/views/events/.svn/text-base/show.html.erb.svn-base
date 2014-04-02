@@ -1,0 +1,4 @@
+<h1><%= @event.name %></h1>
+<p><%= @event.description %></p>
+<%= button_to "Back", root_path, {class: "btn", method: :get} %>
+<%= button_to "Buy ticket", event_purchase_path(@event.id), {class: "btn"} %>

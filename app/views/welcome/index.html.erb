@@ -1,0 +1,23 @@
+<h1>Welcome to Betrimidi.is</h1>
+<p>Here you can see all of the events hosted at our site!</p>
+
+<table>
+	<thead c>
+		<tr>
+			<th>Nafn</th>
+			<th>Lýsing</th>
+			<th>Verð</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @events.each do |event| %>
+		<tr>
+			<td><%= link_to event.name, event_path(event.id), { method: :post } %></td>
+			<td><%=event.description%></td>
+			<td><%=event.price%></td>
+			<td><%= button_to "Buy ticket", event_purchase_path(event.id), {class: "btn"} %></td>
+		</tr>
+		<% end %>
+</tbody>
+</table>
