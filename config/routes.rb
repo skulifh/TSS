@@ -1,4 +1,5 @@
 TSS::Application.routes.draw do
+  #get "users/index"
   get "events/index"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -12,6 +13,7 @@ TSS::Application.routes.draw do
   get '/events/:tyid/:id/purchase', to: 'events#purchase', as: 'event_purchase'
   post '/events/:tyid/:id/confirm_purchase', to: 'events#confirm_purchase', as: 'event_confirm_purchase'
   
+  resources :users
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

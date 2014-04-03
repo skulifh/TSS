@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403111148) do
+ActiveRecord::Schema.define(version: 20140403160828) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -25,10 +25,18 @@ ActiveRecord::Schema.define(version: 20140403111148) do
   end
 
   create_table "tickets", force: true do |t|
-    t.string   "user"
-    t.string   "event_id"
     t.boolean  "paid"
     t.boolean  "used"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "event_id"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
