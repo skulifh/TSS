@@ -2,6 +2,8 @@
 	<div class="col-md-6">
 		<h1>Welcome to Betrimidi.is</h1>
 		<p>Here you can see all of the events hosted at our site!</p>
+		<%= button_to "Festivals", event_specific_path(0), {class: "btn btn-default", style: "float:left", method: :get} %>
+		<%= button_to "Concerts", event_specific_path(1), {class: "btn btn-default", method: :get} %>
 
 		<table class="table table-hover">
 			<thead c>
@@ -15,8 +17,8 @@
 			</thead>
 			<tbody>
 				<% @events.each do |event| %>
-				<tr onClick="javascript:location.href='<%= event_path(event.id) %>'" class="cursor-pointer">
-					<td><%= link_to event.name, event_path(event.id), { method: :get } %></td>
+				<tr onClick="javascript:location.href='<%= event_path(event.form, event.id) %>'" class="cursor-pointer">
+					<td><%= link_to event.name, event_path(event.form,event.id), { method: :get } %></td>
 					<td><%=event.description%></td>
 					<td>
 					<% if event.form == 0 %>Útihátíð
@@ -24,7 +26,7 @@
 					<%end%></td>
 						
 					<td><%=event.price%></td>
-					<td><%= button_to "Buy ticket", event_purchase_path(event.id), {class: "btn btn-default", method: :get} %></td>
+					<td><%= button_to "Buy ticket", event_purchase_path(event.form,event.id), {class: "btn btn-default", method: :get} %></td>
 				</tr>
 				<% end %>
 		</tbody>

@@ -8,6 +8,11 @@ class EventsController < ApplicationController
   	@event = Event.find(params[:id])
   end
 
+  def specific
+    @form = params[:tyid].to_i
+    @events = Event.where("form == ?", @form)
+  end
+
   def purchase
   	@event = Event.find(params[:id])
   end

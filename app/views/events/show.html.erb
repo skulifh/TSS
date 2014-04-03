@@ -1,5 +1,5 @@
 <div class="container">
 	<h1><%= @event.name %></h1>
 	<p><%= @event.description %></p>
-	<%= button_to "Back", root_path, {class: "btn btn-default", style: "float:left", method: :get} %> <%= button_to "Buy ticket", event_purchase_path(@event.id), {class: "btn btn-default", method: :get} %>
+	<%= button_to "Back", root_path, {class: "btn btn-default", style: "float:left", method: :get} %> <%= button_to "Buy ticket", event_purchase_path(@event.form, @event.id), {class: "btn btn-default", method: :get} %>
 </div>
