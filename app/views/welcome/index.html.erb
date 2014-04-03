@@ -11,6 +11,7 @@
 					<th>Nafn</th>
 					<th>Lýsing</th>
 					<th>Tegund</th>
+					<th>Lausir miðar</th>
 					<th>Verð</th>
 					<th></th>
 				</tr>
@@ -25,6 +26,7 @@
 					<% elsif event.form == 1%>Tónleikar
 					<%end%></td>
 						
+					<td><%=event.available%></td>
 					<td><%=event.price%></td>
 					<td><%= button_to "Buy ticket", event_purchase_path(event.form,event.id), {class: "btn btn-default", method: :get} %></td>
 				</tr>
