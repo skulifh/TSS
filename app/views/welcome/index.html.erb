@@ -8,6 +8,7 @@
 				<tr>
 					<th>Nafn</th>
 					<th>Lýsing</th>
+					<th>Tegund</th>
 					<th>Verð</th>
 					<th></th>
 				</tr>
@@ -17,6 +18,11 @@
 				<tr onClick="javascript:location.href='<%= event_path(event.id) %>'" class="cursor-pointer">
 					<td><%= link_to event.name, event_path(event.id), { method: :get } %></td>
 					<td><%=event.description%></td>
+					<td>
+					<% if event.form == 0 %>Útihátíð
+					<% elsif event.form == 1%>Tónleikar
+					<%end%></td>
+						
 					<td><%=event.price%></td>
 					<td><%= button_to "Buy ticket", event_purchase_path(event.id), {class: "btn btn-default", method: :get} %></td>
 				</tr>
