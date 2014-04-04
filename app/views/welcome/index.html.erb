@@ -1,10 +1,12 @@
 <div class="container">
 	<div class="col-md-6">
-		<h1>Welcome to Betrimidi.is</h1>
+		<img src="/logo.jpg" class="img-rounded" alt="Responsive image">
 		<p>Here you can see all of the events hosted at our site!</p>
 		<%= button_to "Festivals", event_specific_path(0), {class: "btn btn-default", style: "float:left", method: :get} %>
 		<%= button_to "Concerts", event_specific_path(1), {class: "btn btn-default", style: "float:left", method: :get} %>
-		<%= button_to "Sign up", new_user_path(), {class: "btn btn-primary", method: :get} %>
+		<% if !current_user %><%= button_to "Login", signin_path(), {class: "btn btn-success", style: "float:left", method: :get} %> 
+		<%= button_to "Sign up", new_user_path(), {class: "btn btn-primary", method: :get} %> <%end%>
+		<% if current_user %> <%= button_to "Logout", signout_path(), {class: "btn btn-danger", method: :delete} %> <%end%>
 
 		<table class="table table-hover">
 			<thead c>

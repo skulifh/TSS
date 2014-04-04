@@ -14,6 +14,10 @@ TSS::Application.routes.draw do
   post '/events/:tyid/:id/confirm_purchase', to: 'events#confirm_purchase', as: 'event_confirm_purchase'
   
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

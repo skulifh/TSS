@@ -10,8 +10,17 @@ class UsersController < ApplicationController
   	@user.username = params[:user][:username]
   	@user.password = params[:user][:password]
   	@user.email = params[:user][:email]
-  	@user.save!
-  	redirect_to users_path()
+
+    if @user.save
+      sign_in @user
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render 'new'
+    end
+
+  	#@user.save!
+  	#redirect_to users_path()
   end
 
   private
