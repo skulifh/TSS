@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+	has_many :ticket
 	def decrease_available()
 		self.update_column :available, self.available - 1
 	end
