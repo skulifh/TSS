@@ -14,11 +14,16 @@ class EventsController < ApplicationController
   end
 
   def purchase
+    if(!current_user)
+      redirect_to signin_path()
+    end
   	@event = Event.find(params[:id])
   end
 
   def confirm_purchase
   	@event = Event.find(params[:id])
+
+
   	a = TCPSocket.new('46.149.22.251', 2000) # could replace 127.0.0.1 with your "real" IP if desired.
 	  a.write "jon"
 	  @reply = a.recv(1024)
@@ -26,7 +31,7 @@ class EventsController < ApplicationController
 
     if (@reply.to_i == 1)
       @event.decrease_available()
-      @event.purchase_ticket()
+      @event.purchase_ticket(current_user.id)
     end
 
 
