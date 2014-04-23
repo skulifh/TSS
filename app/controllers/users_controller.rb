@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   	@user.username = params[:user][:username]
   	@user.password = params[:user][:password]
   	@user.email = params[:user][:email]
+    @user.admin = false
 
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:username, :password, :email)
+  	params.require(:user).permit(:username, :password, :email, :admin)
   end
 end
