@@ -37,8 +37,19 @@ class EventsController < ApplicationController
 
   end
 
+  def new
+    @event = Event.new
+  end
+
   def create
-  	Event.create(event_params)
+    #params.permit!
+  	@event = Event.new(event_params)
+    if @event.save
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+    
   end
 
   def update
@@ -56,6 +67,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-  	params.require(:event).permit(:name, :description, :price, :form, :tickets, :available)
+  	params.require(:event).permit(:name, :description, :price, :form, :tickets, :available, :photo)
   end
 end

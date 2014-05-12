@@ -8,10 +8,12 @@ TSS::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get '/events/:tyid', to: 'events#specific', as: 'event_specific'
-  get '/events/:tyid/:id', to: 'events#show', as: 'event'
-  get '/events/:tyid/:id/purchase', to: 'events#purchase', as: 'event_purchase'
-  post '/events/:tyid/:id/confirm_purchase', to: 'events#confirm_purchase', as: 'event_confirm_purchase'
+  get '/events/specific/:tyid', to: 'events#specific', as: 'event_specific'
+  get '/events/specific/:tyid/:id', to: 'events#show', as: 'event'
+  get '/events/specific/:tyid/:id/purchase', to: 'events#purchase', as: 'event_purchase'
+  post '/events/specific/:tyid/:id/confirm_purchase', to: 'events#confirm_purchase', as: 'event_confirm_purchase'
+
+  resource :events, only: [:new, :create, :destroy]
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
