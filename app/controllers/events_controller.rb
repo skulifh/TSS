@@ -22,10 +22,11 @@ class EventsController < ApplicationController
 
   def confirm_purchase
   	@event = Event.find(params[:id])
+    credit_card = params[:creditcard][:number]
 
 
   	a = TCPSocket.new('46.149.22.251', 2000) # could replace 127.0.0.1 with your "real" IP if desired.
-	  a.write "jon"
+	  a.write credit_card
 	  @reply = a.recv(1024)
 	  a.close
 

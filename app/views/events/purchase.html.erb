@@ -1,5 +1,31 @@
 <div class="container">
-	<h1>Buy a ticket for <%=@event.name%></h1>
+<div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+	<!--<h1>Buy a ticket for <%=@event.name%></h1>
 	<%= button_to "Back", event_path(), {class: "btn btn-default", style: "float:left", method: :get} %>
-	<%= button_to "Purchase", event_confirm_purchase_path(@event.form, @event.id), {class: "btn btn-default"} %>
+	<%= button_to "Purchase", event_confirm_purchase_path(@event.form, @event.id), {class: "btn btn-default"} %>-->
+
+	<!--<%= form_tag(url: {action: "event_confirm_purchase_path"}, method: "post") do %>
+	  <%= label_tag("Search for:") %>
+	  <%= text_field_tag(:q) %>
+	  <%= submit_tag("Purchase") %>
+	<% end %>-->
+
+	<!--<%=text_field_tag 'query', params[:query] %>
+	<%= button_to "Purchase", event_confirm_purchase_path(:creditcard => :query) %>-->
+
+	<%= form_for :creditcard, url: {action: "confirm_purchase"} do |f| %>
+      <p>
+        <%= f.label 'Creditcard:' %><br/>
+        <%= f.text_field :number, class: "form-control" %>
+      </p>
+      <p>
+        <%= f.submit 'Sign Up', class: "btn btn-success" %>&nbsp;&nbsp;&nbsp;
+        <%= f.submit 'Clear Form', class: "btn btn-default", :type => 'reset' %>
+      </p>
+    <% end %>
+</div>
+  <div class="col-md-4">
+  </div>
 </div>
